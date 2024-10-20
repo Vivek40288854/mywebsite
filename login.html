@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .login-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .input-field {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .login-btn {
+            width: 100%;
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .login-btn:hover {
+            background-color: #218838;
+        }
+        .error {
+            color: red;
+            font-size: 12px;
+            margin-bottom: 10px;
+            display: none;
+        }
+        .signup-link {
+            display: block;
+            text-align: center;
+            margin-top: 15px;
+        }
+        .signup-link a {
+            text-decoration: none;
+            color: #007bff;
+        }
+        .signup-link a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2>Login</h2>
+        <div id="error-message" class="error">Invalid username or password!</div>
+        <input type="text" id="username" class="input-field" placeholder="Username">
+        <input type="password" id="password" class="input-field" placeholder="Password">
+        <button class="login-btn" onclick="login()">Login</button>
+        
+        <div class="signup-link">
+            <p>Don't have an account?</p>
+            <a href="signup.html">Create New Account</a>
+        </div>
+    </div>
+
+    <script>
+        function login() {
+            var username = document.getElementById('username').value;
+            var password = document.getElementById('password').value;
+
+            // Get stored user data from localStorage
+            var storedUsername = localStorage.getItem('username');
+            var storedPassword = localStorage.getItem('password');
+
+            if (username === storedUsername && password === storedPassword) {
+                // Redirect to the main page (Google Maps with NPK)
+                window.location.href = "map.html";
+            } else {
+                // Display an error message
+                document.getElementById('error-message').style.display = "block";
+            }
+        }
+    </script>
+</body>
+</html>
